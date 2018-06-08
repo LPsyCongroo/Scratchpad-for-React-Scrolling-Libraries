@@ -2,7 +2,10 @@ import styled from "styled-components";
 import fadeIn from './fadeIn.keyframes';
 
 export default styled.nav`
-  position: fixed;
+  position: absolute;
+  top: 100vh;
+  left: 0;
+  transform: translateZ(0);
 
   color: white;
 
@@ -22,8 +25,15 @@ export default styled.nav`
     color: #060606;
   }
 
-  ${({isVisble}) => isVisble && `
-    animation: ${fadeIn} 0.3s forwards;
-  `}
+  transition: opacity 0.2s;
+  opacity: 0;
+
+  ${({isVisible}) => isVisible && `
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    `
+  }
 
 `

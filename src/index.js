@@ -15,7 +15,7 @@ import Header from "./styled/Header";
 import Section from "./styled/Section";
 import Nav from "./styled/Nav";
 
-import Traversify from './traversify';
+import Overflow from './overflow';
 
 injectGlobal`
   * {
@@ -24,7 +24,6 @@ injectGlobal`
   }
   html, body{
     font-family: sans-serif;
-    overflow: hidden;
   }
 
 `;
@@ -46,27 +45,12 @@ class App extends React.Component {
     super(props);
     this.state = {
       visible: {
+        nav: false,
         section1: false,
         section2: false,
         section3: false
       }
     };
-  }
-
-  componentDidMount() {
-    // Events.scrollEvent.register("begin", (to, element) => {
-    //   console.log("begin", to, element);
-    // });
-    // Events.scrollEvent.register("end", (to, element) => {
-    //   console.log("end", to, element);
-    //   this.setState(prev => ({
-    //     visible: Object.assign(prev.visible, { [to]: true })
-    //   }));
-    // });
-    scrollSpy.update();
-    this.scrollTo('header');
-
-
   }
 
   scrollTo(to) {
@@ -82,14 +66,31 @@ class App extends React.Component {
     }));
   };
 
+  handleSetActiveNav = to => {
+    console.log('header is active!');
+    this.setState(prev => ({
+      visible: Object.assign(prev.visible, { nav: false })
+    }));
+  }
+
+  handleSetInactiveNav = to => {
+    console.log('header is NOT active!');
+    
+    this.setState(prev => ({
+      visible: Object.assign(prev.visible, { nav: true })
+    }));
+  }
+
   render = () => (
+    // If the last one is visible, then they all should be and we've reached the end. Turn on scrolling.
     <React.Fragment>
-      <Nav active={this.state.active} isScrolling={this.state.isScrolling}>
+      <Nav isVisible={this.state.visible.nav} >
         <ul>
           <Link 
             {...linkConfig} 
             to="header" 
-            onSetActive={this.handleSetActive}
+            onSetActive={this.handleSetActiveNav}
+            onSetInactive={this.handleSetInactiveNav}
           >
             <li>0</li>
           </Link>
@@ -116,6 +117,7 @@ class App extends React.Component {
           </Link>
         </ul>
       </Nav>
+      <Overflow isNavVisible={this.state.visible.nav}></Overflow>
       <Element name="header">
         <Header id="header">
           <div className="logo" onClick={() => this.scrollTo("section1")} ></div>

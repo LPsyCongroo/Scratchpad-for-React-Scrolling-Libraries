@@ -28,13 +28,13 @@ export default styled.section`
     isVisible &&
     `
     h2 {
-      animation: ${fadeIn} 0.3s 0.5s forwards
+      animation: ${fadeIn} 0.3s 0s ease-in-out forwards
     }
     .p1 {
-      animation: ${fadeIn} 0.3s 1s forwards
+      animation: ${fadeIn} 0.3s 0.3s ease-in-out forwards
     }
     .p2 {
-      animation: ${fadeIn} 0.3s 1.5s forwards
+      animation: ${fadeIn} 0.3s 0.6s ease-in-out forwards
     }
   `};
 `;
