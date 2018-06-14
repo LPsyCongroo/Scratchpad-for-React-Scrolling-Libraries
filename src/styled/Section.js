@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 import fadeIn from './fadeIn.keyframes';
 
 export default styled.section`
@@ -7,7 +7,7 @@ export default styled.section`
   justify-content: space-around;
   align-items: center;
 
-  height: 100vh;
+  min-height: 100vh;
   background: #060606;
   color: white;
 
@@ -28,13 +28,13 @@ export default styled.section`
     isVisible &&
     `
     h2 {
-      animation: ${fadeIn} 0.3s 0s ease-in-out forwards
+      animation: ${fadeIn} 0.2s 0s ease-in forwards
     }
     .p1 {
-      animation: ${fadeIn} 0.3s 0.3s ease-in-out forwards
+      animation: ${fadeIn} 0.2s 0.2s ease-in forwards
     }
     .p2 {
-      animation: ${fadeIn} 0.3s 0.6s ease-in-out forwards
+      animation: ${fadeIn} 0.2s 0.4s ease-in forwards
     }
   `};
 `;

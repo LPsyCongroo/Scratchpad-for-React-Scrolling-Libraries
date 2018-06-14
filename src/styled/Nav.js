@@ -1,5 +1,4 @@
-import styled from "styled-components";
-import fadeIn from './fadeIn.keyframes';
+import styled from 'styled-components';
 
 export default styled.nav`
   position: absolute;
@@ -10,7 +9,7 @@ export default styled.nav`
   color: white;
 
   li {
-    list-decoration: none;
+    list-style: none;
     padding: 20px;
 
     background: #373712;
@@ -28,12 +27,12 @@ export default styled.nav`
   transition: opacity 0.2s;
   opacity: 0;
 
-  ${({isVisible}) => isVisible && `
+  ${({ isVisible }) => isVisible && `
     position: fixed;
     top: 0;
     left: 0;
     opacity: 1;
     `
-  }
+}
 
-`
+`;
